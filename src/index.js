@@ -4,6 +4,16 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const description = document.querySelector('#new-task-description').value;
+    //  const user = e.target['user'].value;
+    // const duration = e.target['duration'].value;
+    // const dueDate = e.target['dueDate'].value;
+    // const priority = e.target['priority'].value;
+    // const taskDetails = `
+    // <strong>Task:</strong> ${description} | 
+    // <strong>User:</strong> ${user} | 
+    // <strong>Duration:</strong> ${duration} hrs | 
+    // <strong>Due:</strong> ${dueDate} | 
+    // <strong>Priority:</strong> ${priority} `;
     buildToDo(description);
     form.reset();
   });
