@@ -29,7 +29,7 @@ function buildToDo(todo,priority) {
   btn.style.backgroundColor='red';
   btn.style.fontSize='15px';
   li.innerHTML = todo;
- //Set color based on priority
+ //  Set color based on priority
  switch(priority.toLowerCase()) {
   case 'high':
     li.style.color = 'red';
