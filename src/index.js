@@ -1,50 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const form = document.querySelector('form');
+  const form = document.querySelector('#create-task-form');
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const description = e.target['new-task-description'].value;
-    const user = e.target['user'].value;
-    const duration = e.target['duration'].value;
-    const dueDate = e.target['dueDate'].value;
-    const priority = e.target['priority'].value;
-    const taskDetails = `
-    <strong>Task:</strong> ${description} | 
-    <strong>User:</strong> ${user} | 
-    <strong>Duration:</strong> ${duration} hrs | 
-    <strong>Due:</strong> ${dueDate} | 
-    <strong>Priority:</strong> ${priority} `;
-    buildToDo(taskDetails,priority);
+    const description = document.querySelector('#new-task-description').value;
+    buildToDo(description);
     form.reset();
   });
-}); 
+});
 
-function buildToDo(todo,priority) {
-  const li = document.createElement('li');  
+function buildToDo(todo) {
+  const li = document.createElement('li');
+
+  const span = document.createElement('span'); //  Holds the task text separately
+  span.textContent = todo;
+
   const btn = document.createElement('button');
-
-  btn.addEventListener('click', handleDelete);
   btn.textContent = 'x';
-  btn.style.color='white';
-  btn.style.backgroundColor='red';
-  btn.style.fontSize='15px';
-  li.innerHTML = todo;
- //  Set color based on priority
- switch(priority.toLowerCase()) {
-  case 'high':
-    li.style.color = 'red';
-    break;
-  case 'medium':
-    li.style.color = 'orange';
-    break;
-  case 'low':
-    li.style.color = 'green';
-    break;
-}
+  btn.style.color = 'white';
+  btn.style.backgroundColor = 'red';
+  btn.style.fontSize = '15px';
+  btn.addEventListener('click', handleDelete);
 
-  li.appendChild(btn);
-
-  console.log(li); 
+  li.appendChild(span);  //  Add text
+  li.appendChild(btn);   //  Then add delete button
 
   document.querySelector('#tasks').appendChild(li);
 }
